@@ -1,2 +1,1 @@
-# react-template
-react模版
+react-template 脚手架模版

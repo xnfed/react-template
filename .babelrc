@@ -1,0 +1,11 @@
+{
+  "presets": [["env", {
+      "useBuiltIns": true,
+      "debug": true,
+      "target": {
+          "node": "8.3.0"
+      }
+  }], "react", "stage-0"],
+  "plugins": [["transform-runtime", { "polyfill": false }], "transform-decorators-legacy", "add-module-exports"],
+  "comments": false // 去除注释
+}
