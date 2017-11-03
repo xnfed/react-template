@@ -4,7 +4,7 @@
   "description": "a react template",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --colors --hot",
+    "start": "webpack-dev-server --inline --progress --colors --hot"
   },
   "author": "xnfed",
   "license": "MIT",
