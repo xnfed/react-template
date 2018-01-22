@@ -1,6 +1,9 @@
-node_modules/
-dist/
-npm-debug.log
-.DS_Store
-.idea
-.project
+.DS_STORE
+*.log
+*.log.*
+
+node_modules
+
+dist
+coverage
+.idea/
