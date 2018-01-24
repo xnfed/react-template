@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import './Zen.scss'
-import Spinner from 'react-spinkit'
+import Spinner from 'react-spinkit';
+import connect from '../../../utils/connect';
 
+@connect()
 export default class Zen extends Component {
 
   render () {

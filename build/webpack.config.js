@@ -49,7 +49,7 @@ webpackConfig.output = {
 webpackConfig.plugins = [
   new webpack.DefinePlugin(config.globals),
   new HtmlWebpackPlugin({
-    template: paths.client('index.html'),
+    template: paths.base('index.html'),
     hash: false,
     favicon: paths.client('static/favicon.ico'),
     filename: 'index.html',
@@ -121,6 +121,16 @@ webpackConfig.module.loaders.push({
     'sass?sourceMap'
   ]
 })
+webpackConfig.module.loaders.push({
+    test: /\.less$/,
+    exclude: null,
+    loaders: [
+      'style',
+      BASE_CSS_LOADER,
+      'postcss',
+      'less?sourceMap'
+    ]
+  })
 webpackConfig.module.loaders.push({
   test: /\.css$/,
   exclude: null,
