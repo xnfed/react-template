@@ -22,10 +22,6 @@ export const Header = () => (
       Elapse
     </Link>
     {' · '}
-    <Link to='/route/88' activeClassName='route--active'>
-      Route
-    </Link>
-    {' · '}
     <Link to='/notFound' activeClassName='route--active'>
       404
     </Link>
