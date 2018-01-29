@@ -1,9 +1,4 @@
 {
-  "presets": [["env", {
-    "targets": {
-      "node": "current"
-    },
-    "useBuiltIns": true
-  }], "react"],
-  "plugins": ["transform-decorators-legacy", "transform-runtime"]
+  "presets": ["es2015", "react", "stage-0"],
+  "plugins": ["transform-runtime"]
 }

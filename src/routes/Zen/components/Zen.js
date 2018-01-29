@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchZen, clearZen } from './../modules/zen'
 import PropTypes from 'prop-types'
 import './Zen.scss'
-import Spinner from 'react-spinkit';
-import connect from '../../../utils/connect';
+import Spinner from 'react-spinkit'
 
-@connect()
-export default class Zen extends Component {
+class Zen extends Component {
 
   render () {
     const { fetchZen, clearZen, zen: { fetching, text } } = this.props
@@ -37,3 +37,14 @@ export default class Zen extends Component {
 Zen.propTypes = {
   zen: PropTypes.object.isRequired
 }
+
+const mapDispatchtoProps = {
+    fetchZen,
+    clearZen
+  }
+
+  const mapStateToProps = (state) => ({
+    zen: state.zen
+  })
+
+export default connect(mapStateToProps, mapDispatchtoProps)(Zen)

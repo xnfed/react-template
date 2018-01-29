@@ -122,16 +122,6 @@ webpackConfig.module.loaders.push({
   ]
 })
 webpackConfig.module.loaders.push({
-    test: /\.less$/,
-    exclude: null,
-    loaders: [
-      'style',
-      BASE_CSS_LOADER,
-      'postcss',
-      'less?sourceMap'
-    ]
-  })
-webpackConfig.module.loaders.push({
   test: /\.css$/,
   exclude: null,
   loaders: [
