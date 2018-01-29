@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack')
 const cssnano = require('cssnano')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -17,14 +18,19 @@ const webpackConfig = {
   devtool: config.compiler_devtool,
   resolve: {
     root: paths.client(),
-    extensions: ['', '.js', '.jsx', '.json']
-  },
+    alias: {
+        shop: paths.client('components')
+    },
+    // modules: ['node_modules'],
+    // modulesDirectories: ["web_modules", "node_modules", 'bower_components'],
+    extensions: ['', '.js', '.jsx', '.less', '.css']
+},
   module: {}
 }
 // ------------------------------------
 // Entry Points
 // ------------------------------------
-const APP_ENTRY = paths.client('main.js')
+const APP_ENTRY = paths.client('index.js')
 
 webpackConfig.entry = {
   app: __DEV__
@@ -49,7 +55,7 @@ webpackConfig.output = {
 webpackConfig.plugins = [
   new webpack.DefinePlugin(config.globals),
   new HtmlWebpackPlugin({
-    template: paths.client('index.html'),
+    template: paths.base('index.html'),
     hash: false,
     favicon: paths.client('static/favicon.ico'),
     filename: 'index.html',
@@ -90,6 +96,15 @@ if (!__TEST__) {
   )
 }
 
+// Eslint
+webpackConfig.module.loaders = [{
+  test: /\.(js|jsx)$/,
+  loader: 'eslint-loader',
+  enforce: 'pre', // 指定该loader最先被调用
+  exclude: /node_modules/,
+  include: /src/ // 指定应用此loader的文件夹
+}]
+
 // ------------------------------------
 // Loaders
 // ------------------------------------
@@ -97,8 +112,7 @@ if (!__TEST__) {
 webpackConfig.module.loaders = [{
   test: /\.(js|jsx)$/,
   exclude: /node_modules/,
-  loader: 'babel',
-  query: config.compiler_babel
+  loader: 'babel'
 }, {
   test: /\.json$/,
   loader: 'json'
@@ -121,6 +135,16 @@ webpackConfig.module.loaders.push({
     'sass?sourceMap'
   ]
 })
+webpackConfig.module.loaders.push({
+    test: /\.less$/,
+    exclude: null,
+    loaders: [
+      'style',
+      BASE_CSS_LOADER,
+      'less?{"sourceMap":true}'
+    ]
+  })
+
 webpackConfig.module.loaders.push({
   test: /\.css$/,
   exclude: null,

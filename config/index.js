@@ -2,7 +2,6 @@
 const path = require('path')
 const debug = require('debug')('app:config')
 const argv = require('yargs').argv
-const ip = require('ip')
 
 debug('Creating default configuration.')
 
@@ -24,8 +23,8 @@ const config = {
   // ----------------------------------
   // Server Configuration
   // ----------------------------------
-  server_host : ip.address(), // use string 'localhost' to prevent exposure on local network
-  server_port : process.env.PORT || 3000,
+  server_host : 'localhost', // use string 'localhost' to prevent exposure on local network
+  server_port : process.env.PORT || 8080,
 
   // ----------------------------------
   // Compiler Configuration
@@ -33,7 +32,7 @@ const config = {
   compiler_babel : {
     cacheDirectory : true,
     plugins        : ['transform-runtime'],
-    presets        : ['es2015', 'react', 'stage-0']
+    presets        : ['env', 'es2015', 'stage-0', 'react']
   },
   compiler_devtool         : 'source-map',
   compiler_hash_type       : 'hash',
