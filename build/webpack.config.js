@@ -16,7 +16,6 @@ debug('Creating configuration.')
 const webpackConfig = {
   devtool: __DEV__ ? config.compiler_devtool : false,
   resolve: {
-    root: paths.client(),
     alias: {
         shop: paths.client('components')
     },
@@ -26,7 +25,7 @@ const webpackConfig = {
 },
 module: {},
 node: {
-    fs: "empty"
+    fs: 'empty'
   }
 }
 // ------------------------------------
