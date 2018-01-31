@@ -12,7 +12,7 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default (state) => {
+export default () => {
     return (target) => {
         return connect(mapStateToProps, mapDispatchToProps)(target)
     }

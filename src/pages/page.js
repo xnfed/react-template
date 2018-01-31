@@ -1,11 +1,6 @@
-import React, {PropTypes} from 'react';
+import React from 'react';
 
 export default class Page extends React.Component {
-    
-    constructor(...args) {
-        super(...args)
-
-    }
 
     componentWillMount() {
     }
@@ -19,5 +14,4 @@ export default class Page extends React.Component {
     setTitle(title) {
         document.title = title;
     }
-    
 }

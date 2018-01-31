@@ -1,7 +1,7 @@
 /* eslint key-spacing:0 spaced-comment:0 */
 const path = require('path')
 const debug = require('debug')('app:config')
-const argv = require('yargs').argv
+// const argv = require('yargs').argv
 
 debug('Creating default configuration.')
 
@@ -32,7 +32,7 @@ const config = {
   compiler_babel : {
     cacheDirectory : true,
     plugins        : ['transform-runtime'],
-    presets        : ['env', 'es2015', 'stage-0', 'react']
+    presets        : ['env', 'stage-2', 'react']
   },
   compiler_devtool         : 'source-map',
   compiler_hash_type       : 'hash',
@@ -57,7 +57,15 @@ const config = {
   coverage_reporters : [
     { type : 'text-summary' },
     { type : 'lcov', dir : 'coverage' }
-  ]
+  ],
+  autoOpenBrowser: false,
+  errorOverlay: true,
+  proxyTable: {
+
+  },
+  poll: false,
+  notifyOnErrors: true,
+  assetsSubDirectory: 'static'
 }
 
 /************************************************
@@ -81,7 +89,7 @@ config.globals = {
   '__DEV__'      : config.env === 'development',
   '__PROD__'     : config.env === 'production',
   '__TEST__'     : config.env === 'test',
-  '__COVERAGE__' : !argv.watch && config.env === 'test',
+//   '__COVERAGE__' : !argv.watch && config.env === 'test',
   '__BASENAME__' : JSON.stringify(process.env.BASENAME || '')
 }
 

@@ -44,6 +44,7 @@ module.exports = {
     "no-trailing-spaces": 1,
     "no-irregular-whitespace": 1,
     "no-throw-literal": 0,
-    "prefer-promise-reject-errors": 0
+    "prefer-promise-reject-errors": 0,
+    "no-unused-vars": ["error", { "varsIgnorePattern": "[connect]" }] // 适配修饰器
   }
 }

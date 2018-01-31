@@ -1,5 +1,5 @@
 import Page from '../page'
-import React, {PropTypes} from 'react';
+import React from 'react';
 import {
   Button
 } from 'antd';
@@ -9,27 +9,21 @@ import connect from '../../utils/connect';
 export default class Index extends Page {
 
     constructor(...args) {
-        super(...args)
+        super(...args);
+        console.log(this);
     }
-
-    static contextTypes = {
-        router: React.PropTypes.object
-    };
-
-    saveSale =() => {
-      this.props.actions.test();
-    };
 
     render() {
         return (
-          <div className="home">
+          <div className='home'>
+          hello
             {this.props.example.title}
-            <div className="home-btn">
-              <Button type="primary"
-                      onClick={this.saveSale}>click</Button>
+            <div className='home-btn'>
+              <Button type='primary'
+                onClick={this.saveSale}>click</Button>
             </div>
-              { this.props.children || '' }
-            </div>
+            { this.props.children || '' }
+          </div>
         )
     }
 

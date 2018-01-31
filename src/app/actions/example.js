@@ -7,6 +7,7 @@ export function test() {
     const url = `${STATIC_API}/config/getSaleTips/11291`;
     return http.get(url)
       .then(resp => {
+          console.log(getState, resp);
         dispatch({
           type: types.EXAMPLE,
           title: '测试'

@@ -1,7 +1,7 @@
 import ReactDom from 'react-dom'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
 import { Provider } from 'react-redux'
-import React, {PropTypes} from 'react';
+import React from 'react';
 import { syncHistoryWithStore } from 'react-router-redux'
 
 import './styles/index.less';
