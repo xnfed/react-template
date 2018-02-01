@@ -10,7 +10,11 @@ export default class Index extends Page {
 
     constructor(...args) {
         super(...args);
-        console.log(this);
+        this.test = this.test.bind(this);
+    }
+
+    test() {
+        this.props.actions.test();
     }
 
     render() {
@@ -20,7 +24,7 @@ export default class Index extends Page {
             {this.props.example.title}
             <div className='home-btn'>
               <Button type='primary'
-                onClick={this.saveSale}>click</Button>
+                onClick={this.test}>click</Button>
             </div>
             { this.props.children || '' }
           </div>

@@ -1,39 +1,18 @@
 /* eslint key-spacing:0 spaced-comment:0 */
 const path = require('path')
 const debug = require('debug')('app:config')
-// const argv = require('yargs').argv
 
 debug('Creating default configuration.')
 
-// ========================================================
-// Default Configuration
-// ========================================================
 const config = {
   env : process.env.NODE_ENV || 'development',
-
-  // ----------------------------------
-  // Project Structure
-  // ----------------------------------
   path_base  : path.resolve(__dirname, '..'),
   dir_client : 'src',
   dir_dist   : 'dist',
   dir_server : 'server',
   dir_test   : 'tests',
-
-  // ----------------------------------
-  // Server Configuration
-  // ----------------------------------
-  server_host : 'localhost', // use string 'localhost' to prevent exposure on local network
+  server_host : 'local.start.shop.jd.net',
   server_port : process.env.PORT || 8080,
-
-  // ----------------------------------
-  // Compiler Configuration
-  // ----------------------------------
-  compiler_babel : {
-    cacheDirectory : true,
-    plugins        : ['transform-runtime'],
-    presets        : ['env', 'stage-2', 'react']
-  },
   compiler_devtool         : 'source-map',
   compiler_hash_type       : 'hash',
   compiler_fail_on_warning : false,
@@ -50,37 +29,19 @@ const config = {
     'react-router',
     'redux'
   ],
-
-  // ----------------------------------
-  // Test Configuration
-  // ----------------------------------
-  coverage_reporters : [
-    { type : 'text-summary' },
-    { type : 'lcov', dir : 'coverage' }
-  ],
   autoOpenBrowser: false,
   errorOverlay: true,
   proxyTable: {
-
+    '/config': {
+        target: 'http://start.shop.jd.net',
+        changeOrigin: true
+      }
   },
   poll: false,
   notifyOnErrors: true,
   assetsSubDirectory: 'static'
 }
 
-/************************************************
--------------------------------------------------
-
-All Internal Configuration Below
-Edit at Your Own Risk
-
--------------------------------------------------
-************************************************/
-
-// ------------------------------------
-// Environment
-// ------------------------------------
-// N.B.: globals added here must _also_ be added to .eslintrc
 config.globals = {
   'process.env'  : {
     'NODE_ENV' : JSON.stringify(config.env)
@@ -89,13 +50,9 @@ config.globals = {
   '__DEV__'      : config.env === 'development',
   '__PROD__'     : config.env === 'production',
   '__TEST__'     : config.env === 'test',
-//   '__COVERAGE__' : !argv.watch && config.env === 'test',
   '__BASENAME__' : JSON.stringify(process.env.BASENAME || '')
 }
 
-// ------------------------------------
-// Validate Vendor Dependencies
-// ------------------------------------
 const pkg = require('../package.json')
 
 config.compiler_vendors = config.compiler_vendors
@@ -109,9 +66,7 @@ config.compiler_vendors = config.compiler_vendors
     )
   })
 
-// ------------------------------------
-// Utilities
-// ------------------------------------
+
 function base () {
   const args = [config.path_base].concat([].slice.call(arguments))
   return path.resolve.apply(path, args)
@@ -123,9 +78,6 @@ config.utils_paths = {
   dist   : base.bind(null, config.dir_dist)
 }
 
-// ========================================================
-// Environment Configuration
-// ========================================================
 debug(`Looking for environment overrides for NODE_ENV "${config.env}".`)
 const environments = require('./environments')
 const overrides = environments[config.env]

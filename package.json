@@ -52,7 +52,7 @@
       }
     },
     "start": {
-      "command": "webpack-dev-server --inline --progress --hot --config bin/start",
+      "command": "webpack-dev-server --inline --progress --config bin/start",
       "env": {
         "NODE_ENV": "production",
         "DEBUG": "app:*"

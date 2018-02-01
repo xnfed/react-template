@@ -18,7 +18,6 @@ const hotWebpackConfig = merge(baseConfig, {
   devServer: {
     inline: true,
     clientLogLevel: 'warning',
-    hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
     host: HOST || config.server_host,
