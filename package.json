@@ -12,13 +12,10 @@
     "compile": "better-npm-run compile",
     "lint": "eslint bin build config server src tests",
     "lint:fix": "npm run lint -- --fix",
-    "start": "better-npm-run start",
-    "test": "better-npm-run test",
-    "test:dev": "npm run test -- --watch",
     "deploy": "better-npm-run deploy",
     "dev": "better-npm-run deploy:dev",
     "prod": "better-npm-run deploy:prod",
-    "hot": "webpack-dev-server --inline --progress --hot ./bin/hot"
+    "start": "better-npm-run start"
   },
   "betterScripts": {
     "compile": {
@@ -55,20 +52,7 @@
       }
     },
     "start": {
-      "command": "node bin/server",
-      "env": {
-        "DEBUG": "app:*"
-      }
-    },
-    "test": {
-      "command": "node ./node_modules/karma/bin/karma start build/karma.conf",
-      "env": {
-        "NODE_ENV": "test",
-        "DEBUG": "app:*"
-      }
-    },
-    "hot": {
-      "command": "webpack-dev-server bin/hot",
+      "command": "webpack-dev-server --inline --progress --hot --config bin/start",
       "env": {
         "NODE_ENV": "development",
         "DEBUG": "app:*"
@@ -86,8 +70,8 @@
     "axios": "^0.17.1",
     "axios-jsonp": "^1.0.1",
     "debug": "^2.2.0",
-    "react": "^15.3.0",
-    "react-dom": "^15.3.0",
+    "react": "^15.5.0",
+    "react-dom": "^15.5.0",
     "react-redux": "^5.0.1",
     "react-router": "^3.0.0",
     "react-spinkit": "^1.1.11",
@@ -128,10 +112,10 @@
     "html-webpack-plugin": "^2.22.0",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
-    "mocha": "^3.0.1",
     "node-notifier": "^5.2.1",
     "node-sass": "^4.0.0",
     "nodemon": "^1.10.2",
+    "portfinder": "^1.0.13",
     "postcss-loader": "^2.0.8",
     "react-addons-test-utils": "^15.0.0",
     "react-router-redux": "^4.0.7",

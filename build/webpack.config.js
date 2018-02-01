@@ -22,11 +22,8 @@ const webpackConfig = {
     // modules: ['node_modules'],
     // modulesDirectories: ["web_modules", "node_modules", 'bower_components'],
     extensions: ['*', '.js', '.jsx', '.less', '.css']
-},
-module: {},
-node: {
-    fs: 'empty'
-  }
+    },
+    module: {}
 }
 // ------------------------------------
 // Entry Points
@@ -92,7 +89,7 @@ if (!__TEST__) {
 webpackConfig.module.rules = [{
   test: /\.js$/,
   loader: 'eslint-loader',
-  enforce: 'pre', // 指定该loader最先被调用
+  enforce: 'pre',
   exclude: /node_modules/,
   include: /src/
 }]

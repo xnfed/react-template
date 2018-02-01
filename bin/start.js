@@ -1,14 +1,14 @@
 /**
  * Created by xugaobo on 2018/1/30.
  */
-const path = require('path')
 const webpack = require('webpack')
 const merge = require('webpack-merge')
-const portfinder = require('portfinder')
+const path = require('path')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const baseConfig = require('../build/webpack.config')
 const config = require('../config')
 const utils = require('../build/utils')
+const portfinder = require('portfinder')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)

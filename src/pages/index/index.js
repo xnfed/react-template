@@ -16,7 +16,7 @@ export default class Index extends Page {
     render() {
         return (
           <div className='home'>
-          hello
+          hello world!
             {this.props.example.title}
             <div className='home-btn'>
               <Button type='primary'
