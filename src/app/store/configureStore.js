@@ -1,7 +1,7 @@
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducer from '../reducers'
-import { routerReducer, routerMiddleware } from 'react-router-redux'
+import { routerMiddleware } from 'react-router-redux'
 
 let middlewares = [thunk]
 let MODE = process.env.MODE
@@ -17,7 +17,7 @@ if (MODE !== 'production') {
     middlewares = [...middlewares, logger]
 }
 
-module.exports = function configureStore(history, initialState) {
+export default function configureStore(history, initialState) {
     middlewares = [...middlewares, routerMiddleware(history)]
     const createStoreWithMiddleware = applyMiddleware(...middlewares)(createStore)
     return createStoreWithMiddleware(reducer, initialState)

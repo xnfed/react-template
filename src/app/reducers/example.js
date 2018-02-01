@@ -2,7 +2,7 @@ import * as types from '../constants/ActionTypes'
 import createReducer from './createReducer';
 
 const initialState = {
-    title: '',
+    title: ''
 };
 
 function updateState(oldObject, ...newValues) {

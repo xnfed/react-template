@@ -4,6 +4,6 @@
     {
         "modules": false
     }
-], "es2015", "react", "stage-0"],
+], "react", "stage-2"],
   "plugins": [["transform-runtime", { "polyfill": false }], "transform-decorators-legacy", ["import", {"libraryName": "antd", "style":false}]]
 }
