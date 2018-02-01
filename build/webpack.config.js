@@ -14,30 +14,26 @@ const __TEST__ = config.globals.__TEST__
 
 debug('Creating configuration.')
 const webpackConfig = {
+  context: path.resolve(__dirname, '../'),
   devtool: __DEV__ ? config.compiler_devtool : false,
   resolve: {
     alias: {
         shop: paths.client('components')
     },
-    // modules: ['node_modules'],
-    // modulesDirectories: ["web_modules", "node_modules", 'bower_components'],
     extensions: ['*', '.js', '.jsx', '.less', '.css']
     },
     module: {}
 }
-// ------------------------------------
+
 // Entry Points
-// ------------------------------------
 const APP_ENTRY = paths.client('index.js')
 
 webpackConfig.entry = {
-  app: [APP_ENTRY],
+  app: APP_ENTRY,
   vendor: config.compiler_vendors
 }
 
-// ------------------------------------
 // Bundle Output
-// ------------------------------------
 webpackConfig.output = {
   filename: `[name].[${config.compiler_hash_type}].js`,
   chunkFilename: '[chunkhash].js',
@@ -45,9 +41,7 @@ webpackConfig.output = {
   publicPath: config.compiler_public_path
 }
 
-// ------------------------------------
 // Plugins
-// ------------------------------------
 webpackConfig.plugins = [
   new webpack.DefinePlugin(config.globals),
   new HtmlWebpackPlugin({
@@ -55,7 +49,6 @@ webpackConfig.plugins = [
     hash: false,
     favicon: paths.client('static/favicon.ico'),
     filename: 'index.html',
-    // inject: 'body',
     minify: {
       collapseWhitespace: true
     }
@@ -103,11 +96,7 @@ webpackConfig.module.rules.push({
   exclude: /node_modules/
 })
 
-// ------------------------------------
 // Style Loaders
-// ------------------------------------
-// We use cssnano with the postcss loader, so we tell
-// css-loader not to duplicate minimization.
 const BASE_CSS_LOADER = 'css-loader?sourceMap&-minimize'
 
 webpackConfig.module.rules.push({
@@ -127,7 +116,6 @@ webpackConfig.module.rules.push({
 })
 
 // File loaders
-/* eslint-disable */
 webpackConfig.module.rules.push(
   {
     test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -169,7 +157,6 @@ if (!__DEV__) {
     // const first = loader.loader[0]
     // const rest = loader.loader.slice(1)
     loader.loader = ExtractTextPlugin.extract(loader.loader)
-    // delete loader.loader
   })
 
   webpackConfig.plugins.push(

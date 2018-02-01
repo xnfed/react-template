@@ -4,20 +4,20 @@ import { Provider } from 'react-redux'
 import React from 'react';
 import { syncHistoryWithStore } from 'react-router-redux'
 
-import './styles/index.less';
+import './styles';
 
 import configureStore from './app/store/configureStore'
 
-const index = (location, callback) => {
+const Home = (location, callback) => {
     require.ensure([], require => {
-        callback(null, require('./pages/index/index').default)
-    }, 'index')
+        callback(null, require('./pages/home/index').default)
+    }, 'home')
 };
 
 const routes = (history) => (
   <Router history={history}>
-    <Route path='/' getComponent={index}>
-      <IndexRoute getIndexRoute={index} />
+    <Route path='/' getComponent={Home}>
+      <IndexRoute getIndexRoute={Home} />
     </Route>
   </Router>
 );
