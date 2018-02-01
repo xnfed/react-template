@@ -6,7 +6,7 @@ import {
 import connect from '../../utils/connect';
 
 @connect()
-export default class Index extends Page {
+export default class Home extends Page {
 
     constructor(...args) {
         super(...args);
