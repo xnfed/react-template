@@ -14,7 +14,6 @@ const __TEST__ = config.globals.__TEST__
 
 debug('Creating configuration.')
 const webpackConfig = {
-  context: path.resolve(__dirname, '../'),
   devtool: __DEV__ ? config.compiler_devtool : false,
   resolve: {
     alias: {
