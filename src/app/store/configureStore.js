@@ -2,12 +2,12 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import reducer from '../reducers'
 import { routerMiddleware } from 'react-router-redux'
+import { createLogger } from 'redux-logger'
 
 let middlewares = [thunk]
 let MODE = process.env.MODE
 
 if (MODE !== 'production') {
-    let createLogger = require('redux-logger')
     const logger = createLogger({
         level: 'info',
         logger: console,

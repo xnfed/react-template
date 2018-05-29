@@ -11,7 +11,7 @@ const config = {
   dir_dist   : 'dist',
   dir_server : 'server',
   dir_test   : 'tests',
-  server_host : 'localhost',
+  server_host : 'local.restriction.net',
   server_port : process.env.PORT || 8080,
   compiler_devtool         : 'source-map',
   compiler_hash_type       : 'hash',

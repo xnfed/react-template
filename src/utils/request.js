@@ -21,7 +21,6 @@ axios.interceptors.request.use(
             const t = new Date().getTime()
             config.url = `${url}${url.indexOf('?') === -1 ? '?' : '&'}t=${t}`
         }
-        console.log('axios config: ', config)
         return config
     },
     function(error) {
