@@ -37,7 +37,7 @@ webpackConfig.output = {
   filename: `[name].[hash].js`,
   chunkFilename: '[chunkhash].js',
   path: paths.dist(),
-  publicPath: config.compiler_public_path
+  publicPath: config.publishPath
 }
 
 // Plugins

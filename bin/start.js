@@ -9,6 +9,7 @@ const baseConfig = require('../build/webpack.config')
 const config = require('../config')
 const utils = require('../build/utils')
 const portfinder = require('portfinder')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -39,21 +40,24 @@ const hotWebpackConfig = merge(baseConfig, {
     tls: 'empty',
     child_process: 'empty'
   },
+  output: {
+    publicPath: config.compiler_public_path
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': config.globals.__DEV__
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
     // copy custom static assets
-    // new CopyWebpackPlugin([
-    //   {
-    //     from: path.resolve(__dirname, '../static'),
-    //     to: config.assetsSubDirectory,
-    //     ignore: ['.*']
-    //   }
-    // ])
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: config.staticSubDirectory,
+        ignore: ['.*']
+      }
+    ])
   ]
 })
 

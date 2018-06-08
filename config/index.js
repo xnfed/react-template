@@ -39,7 +39,9 @@ const config = {
   },
   poll: false,
   notifyOnErrors: true,
-  assetsSubDirectory: 'static'
+  assetsSubDirectory: 'static',
+  staticSubDirectory: 'static',
+  publishPath: '//b-static.jd.com/xxx'
 }
 
 config.globals = {
